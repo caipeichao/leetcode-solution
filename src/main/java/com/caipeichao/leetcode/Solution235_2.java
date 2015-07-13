@@ -10,7 +10,7 @@ public class Solution235_2 {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         while(true) {
             if(p.val < root.val && q.val < root.val) {
-                root = root.left;
+                root = root.left;k˚
             } else if(p.val > root.val && q.val > root.val) {
                 root = root.right;
             } else if(p.val < root.val && q.val > root.val) {
