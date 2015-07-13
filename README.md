@@ -1,3 +1,3 @@
 # leetcode-solution
 
-Solutions for [Leet Code](http://leetcode.com/)
+Solutions for [Leet Code](http://leetcode.com/).
