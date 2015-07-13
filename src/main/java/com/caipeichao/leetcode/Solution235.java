@@ -29,13 +29,13 @@ public class Solution235 {
                 return result;
             }
             if (node.val > root.val) {
-                root = root.right;
                 result.add(root);
+                root = root.right;
                 continue;
             }
             if (node.val < root.val) {
-                root = root.left;
                 result.add(root);
+                root = root.left;
                 continue;
             }
             throw new RuntimeException("BST should not contain same value");
