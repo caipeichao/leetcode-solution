@@ -5,14 +5,13 @@ package com.caipeichao.leetcode;
  */
 public class Solution53 {
     public int maxSubArray(int[] nums) {
-        int maxSum = Integer.MIN_VALUE;
-        int currentSum = nums[0];
-        int currentStart = 0;
-        for (int i = 1; i < nums.length; i++) {
-            currentSum += nums[i];
-        }
-        if(currentSum > maxSum) {
-            return currentSum;
+        int maxSum = -999999;
+        for (int i = 0; i < nums.length; i++) {
+            int sum = 0;
+            for (int j = i; j < nums.length; j++) {
+                sum += nums[j];
+                if (sum > maxSum) maxSum = sum;
+            }
         }
         return maxSum;
     }
