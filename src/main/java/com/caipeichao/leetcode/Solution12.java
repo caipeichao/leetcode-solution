@@ -21,7 +21,7 @@ public class Solution12 {
         Symbol s50 = new Symbol(50, "L");
         Symbol s10 = new Symbol(10, "X");
         Symbol s5 = new Symbol(5, "V");
-        Symbol s1 = new Symbol(1, "I");
+        Symbol s1 = new Symbol(1, "I");
 
         StringBuilder result = new StringBuilder();
         num = consume(num, s1000, s100, result);
