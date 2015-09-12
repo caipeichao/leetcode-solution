@@ -10,3 +10,4 @@ public class Solution26 {
         return j;
     }
 }
+
