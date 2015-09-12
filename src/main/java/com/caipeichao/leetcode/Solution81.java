@@ -1,5 +1,8 @@
 package com.caipeichao.leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Solution81 {
     public boolean search(int[] nums, int target) {
         // 如果长度很小，就扫描查找就行了
@@ -114,3 +117,4 @@ public class Solution81 {
         }
     }
 }
+
