@@ -16,7 +16,7 @@ public class Solution77 {
         while (true) {
             List<Integer> subResult = new ArrayList<Integer>();
             for (int e : j) {
-                subResult.add(e);
+                subResult.add(e + 1);
             }
             result.add(subResult);
             if (!increase(j, n)) return result;
