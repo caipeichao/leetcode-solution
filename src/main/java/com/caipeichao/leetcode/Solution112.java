@@ -1,5 +1,8 @@
 package com.caipeichao.leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Solution112 {
     public boolean hasPathSum(TreeNode root, int sum) {
         // 树是空的
@@ -29,3 +32,4 @@ public class Solution112 {
         return false;
     }
 }
+
