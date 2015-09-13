@@ -1,6 +1,8 @@
 package com.caipeichao.leetcode;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Solution225 {
     private LinkedList<Integer> queue = new LinkedList<Integer>();
@@ -35,3 +37,4 @@ public class Solution225 {
         return queue.isEmpty();
     }
 }
+
