@@ -13,4 +13,12 @@ public class TestUtils {
         }
         return result.toString();
     }
+
+    public static String toString2(List<Integer> list) {
+        StringBuilder result = new StringBuilder();
+        for (Integer e : list) {
+            result.append(e);
+        }
+        return result.toString();
+    }
 }

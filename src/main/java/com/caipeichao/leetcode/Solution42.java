@@ -1,5 +1,7 @@
 package com.caipeichao.leetcode;
 
+import java.util.Stack;
+
 public class Solution42 {
     public int trap(int[] height) {
         if (height.length == 0) return 0;
@@ -55,3 +57,4 @@ public class Solution42 {
         return result;
     }
 }
+
