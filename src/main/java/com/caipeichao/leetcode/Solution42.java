@@ -29,14 +29,20 @@ public class Solution42 {
             lastRightMaxHeight = Math.max(lastRightMaxHeight, h);
         }
 
-        // 每层都遍历一遍
-        int result = 0;
+        // 计算totalArea=石头+水的总面积
+        int totalArea = 0;
         for (int i = 0; i < maxHeight; i++) {
-            for (int j = maxLeft[i]; j <= maxRight[i]; j++) {
-                if (height[j] <= i) {
-                    result++;
-                }
-            }
+            totalArea += maxRight[i] - maxLeft[i] + 1;
+        }
+
+        // 从totalArea中减掉石头的面积就是最终的答案
+        return totalArea - sum(height);
+    }
+
+    private int sum(int[] li) {
+        int result = 0;
+        for (int e : li) {
+            result += e;
         }
         return result;
     }
