@@ -12,6 +12,8 @@ public class Solution172Test {
             int actual = new Solution172().trailingZeroes(i);
             System.out.println(i + "," + actual);
         }
+        int x = new Solution172().trailingZeroes(2147483647);
+        assertEquals(x, 536870902);
         // assertEquals(actual, 249998);
     }
 }

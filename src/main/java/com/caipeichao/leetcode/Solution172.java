@@ -3,7 +3,7 @@ package com.caipeichao.leetcode;
 public class Solution172 {
     public int trailingZeroes(int n) {
         int result = 0;
-        for (int k = 5; k <= n; k *= 5) {
+        for (long k = 5; k <= n; k *= 5) {
             result += n / k;
         }
         return result;
