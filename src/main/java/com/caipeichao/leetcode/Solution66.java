@@ -1,5 +1,7 @@
 package com.caipeichao.leetcode;
 
+import java.util.LinkedList;
+
 public class Solution66 {
     public int[] plusOne(int[] digits) {
         int n = digits.length;
@@ -22,3 +24,4 @@ public class Solution66 {
         return result;
     }
 }
+
