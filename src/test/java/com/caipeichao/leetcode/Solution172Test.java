@@ -8,7 +8,10 @@ public class Solution172Test {
 
     @Test
     public void testTrailingZeroes() throws Exception {
-        int actual = new Solution172().trailingZeroes(1000000);
-        assertEquals(actual, 249998);
+        for (int i = 0; i < 1000; i++) {
+            int actual = new Solution172().trailingZeroes(i);
+            System.out.println(i + "," + actual);
+        }
+        // assertEquals(actual, 249998);
     }
 }
