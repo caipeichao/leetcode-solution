@@ -1,7 +1,9 @@
 package com.caipeichao.leetcode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Solution216 {
     public List<List<Integer>> combinationSum3(int k, int n) {
@@ -59,3 +61,4 @@ public class Solution216 {
         return false;
     }
 }
+
