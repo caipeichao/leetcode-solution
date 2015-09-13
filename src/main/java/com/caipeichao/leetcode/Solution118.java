@@ -31,3 +31,4 @@ public class Solution118 {
         return list.get(n);
     }
 }
+
