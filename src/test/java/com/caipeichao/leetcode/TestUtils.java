@@ -21,4 +21,12 @@ public class TestUtils {
         }
         return result.toString();
     }
+
+    public static String toString(int[] b) {
+        StringBuilder result = new StringBuilder();
+        for (int e : b) {
+            result.append(e);
+        }
+        return result.toString();
+    }
 }
