@@ -29,4 +29,13 @@ public class TestUtils {
         }
         return result.toString();
     }
+
+    public static int[] parseIntArray(String input) {
+        String[] a = input.split(",");
+        int[] result = new int[a.length];
+        for (int i = 0; i < a.length; i++) {
+            result[i] = Integer.parseInt(a[i]);
+        }
+        return result;
+    }
 }
