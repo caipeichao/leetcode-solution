@@ -5,7 +5,11 @@ import java.util.List;
 
 public class Solution95 {
     public List<TreeNode> generateTrees(int n) {
-        if (n == 0) return new ArrayList<TreeNode>();
+        if (n == 0) {
+            List<TreeNode> result = new ArrayList<TreeNode>();
+            result.add(null);
+            return result;
+        }
 
         // 生成数字
         List<Integer> nums = new ArrayList<Integer>();
@@ -31,7 +35,7 @@ public class Solution95 {
         }
 
         // 如果有多个节点，就让数字分到两边
-        Integer root = nums.get(0);
+        Integer mid = nums.get(0);
         List<Integer> left = new ArrayList<Integer>();
         List<Integer> right = new ArrayList<Integer>();
         right.addAll(nums);
@@ -47,7 +51,7 @@ public class Solution95 {
             // 两边的形状进行组合
             for (TreeNode leftNode : leftPatterns) {
                 for (TreeNode rightNode : rightPatterns) {
-                    TreeNode rootNode = new TreeNode(root);
+                    TreeNode rootNode = new TreeNode(mid);
                     rootNode.left = leftNode;
                     rootNode.right = rightNode;
                     result.add(rootNode);
@@ -56,10 +60,9 @@ public class Solution95 {
 
             // 将右边一个节点分到左边
             if (right.isEmpty()) break;
-            int lastIndex = right.size() - 1;
-            Integer last = right.get(lastIndex);
-            right.remove(last);
-            left.add(0, last);
+            left.add(mid);
+            mid = right.get(0);
+            right.remove(0);
         }
         return result;
     }
