@@ -1,5 +1,8 @@
 package com.caipeichao.leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Solution142 {
     public ListNode detectCycle(ListNode head) {
         if (head == null) return null;
@@ -9,7 +12,7 @@ public class Solution142 {
         if (r.last != head) return null;
         reverseList(head);
         int totalLength = r.count;
-        if(totalLength == 1) return null;
+        if (totalLength == 1) return null;
 
         // 进入链表的一半
         int half = (totalLength) / 2;
