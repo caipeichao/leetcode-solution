@@ -18,6 +18,7 @@ public class Solution102 {
             }
             if (newLevel.isEmpty()) break;
             levels.add(newLevel);
+            level = newLevel;
         }
 
         // 取出每个节点的值
