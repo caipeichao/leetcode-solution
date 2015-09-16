@@ -1,5 +1,10 @@
 package com.caipeichao.leetcode;
 
+import com.alibaba.fastjson.JSON;
+import com.sun.deploy.util.StringUtils;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class TestUtils {
@@ -37,5 +42,32 @@ public class TestUtils {
             result[i] = Integer.parseInt(a[i]);
         }
         return result;
+    }
+
+    public static String toStringListTreeNode(List<TreeNode> nodes) {
+        List<String> result = new ArrayList<String>();
+        for (TreeNode node : nodes) {
+            result.add(toString(node));
+        }
+        return JSON.toJSONString(result);
+    }
+
+    public static String toString(TreeNode node) {
+        if (node == null) return "{#}";
+
+        LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.add(node);
+        List<String> result = new ArrayList<String>();
+        while (!queue.isEmpty()) {
+            TreeNode head = queue.pollFirst();
+            if (head != null) {
+                result.add(Integer.toString(head.val));
+                queue.add(head.left);
+                queue.add(head.right);
+            } else {
+                result.add("#");
+            }
+        }
+        return "{" + StringUtils.join(result, ",") + "}";
     }
 }
