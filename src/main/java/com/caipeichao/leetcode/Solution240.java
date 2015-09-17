@@ -11,143 +11,92 @@ public class Solution240 {
         int height = matrix[0].length;
         if (height == 0) return false;
 
-        // 先在这个矩阵画一个对角线，从对角线中取出所有的值
-        List<Point> diagonal = drawLine(width, height);
-        List<Integer> diagonalValues = new ArrayList<Integer>();
-        for (Point e : diagonal) {
-            int value = matrix[e.x][e.y];
-            diagonalValues.add(value);
+        // 将较长的一层作为二分查找
+        VirtualMatrix m;
+        if (width > height) {
+            m = new VirtualMatrix(matrix);
+        } else {
+            m = new ReverseMatrix(matrix);
         }
 
-        // 沿着对角线进行二分查找，确定要搜的范围
-        Return r = bisect(diagonalValues, target);
-        if (r.found) {
-            return true;
+        // 分层二分查找
+        for (int y = 0; y < m.getHeight(); y++) {
+            boolean found = bisect(m, y, target);
+            if (found) return true;
         }
-
-        // 提取要搜索的范围，分别进行二分查找
-        if (r.to != null) {
-            Point toPoint = diagonal.get(r.to);
-            List<Integer> vline = getLine(matrix, new Point(toPoint.x, 0), toPoint);
-            Return vr = bisect(vline, target);
-            if (vr.found) return true;
-
-            List<Integer> hline = getLine(matrix, new Point(0, toPoint.y), toPoint);
-            Return hr = bisect(hline, target);
-            if (hr.found) return true;
-        }
-
-        if (r.from != null) {
-            Point fromPoint = diagonal.get(r.from);
-            List<Integer> v2line = getLine(matrix, fromPoint, new Point(fromPoint.x, height - 1));
-            Return vr2 = bisect(v2line, target);
-            if (vr2.found) return true;
-
-            List<Integer> h2line = getLine(matrix, fromPoint, new Point(width - 1, fromPoint.y));
-            Return hr2 = bisect(h2line, target);
-            if (hr2.found) return true;
-        }
-
         return false;
     }
 
-    public Return bisect(List<Integer> list, int target) {
+    private boolean bisect(VirtualMatrix matrix, int y, int target) {
         int start = 0;
-        int end = list.size();
+        int end = matrix.getWidth();
+        int startNum = matrix.get(start, y);
+        int endNum = matrix.get(end - 1, y);
+        if (target < startNum) return false;
+        if (target > endNum) return false;
         while (true) {
             int length = end - start;
             if (length < 5) {
                 for (int i = start; i < end; i++) {
-                    int e = list.get(i);
-                    if (e == target) {
-                        return found();
-                    }
-                    if (e > target) {
-                        if (i > 0) {
-                            return notFound(i - 1, i);
-                        } else {
-                            return notFound(null, i);
-                        }
-                    }
+                    if (matrix.get(i, y) == target)
+                        return true;
                 }
-                return notFound(end - 1, null);
+                return false;
             }
             int mid = start + (length - 1) / 2;
-            int midNum = list.get(mid);
-            if (midNum < target) {
+            int midNum = matrix.get(mid, y);
+            if (midNum == target) {
+                return true;
+            } else if (midNum < target) {
                 start = mid;
-            } else if (target < midNum) {
-                end = mid + 1;
             } else {
-                return found();
+                end = mid + 1;
             }
         }
     }
 
-    private Return found() {
-        Return r = new Return();
-        r.found = true;
-        return r;
-    }
+    public static class VirtualMatrix {
+        private int[][] matrix;
+        private int width;
+        private int height;
 
-    private Return notFound(Integer from, Integer to) {
-        Return r = new Return();
-        r.from = from;
-        r.to = to;
-        return r;
-    }
+        public VirtualMatrix(int[][] matrix) {
+            this.matrix = matrix;
+            this.width = matrix.length;
+            this.height = matrix[0].length;
+        }
 
-    public List<Integer> getLine(int[][] matrix, Point from, Point to) {
-        List<Integer> result = new ArrayList<Integer>();
-        if (from.x == to.x) {
-            for (int y = from.y; y <= to.y; y++) {
-                int x = from.x;
-                result.add(matrix[x][y]);
-            }
-            return result;
-        } else {
-            for (int x = from.x; x <= to.x; x++) {
-                int y = from.y;
-                result.add(matrix[x][y]);
-            }
-            return result;
+        public int get(int x, int y) {
+            return matrix[x][y];
+        }
+
+        public int getWidth() {
+            return width;
+        }
+
+        public int getHeight() {
+            return height;
         }
     }
 
-    private static class Return {
-        public boolean found;
-        public Integer from;
-        public Integer to;
-    }
-
-    public List<Point> drawLine(int width, int height) {
-        // 要求宽度大于长度，否则调换宽度和长度，然后翻转结果
-        if (width < height) {
-            List<Point> line = drawLine(height, width);
-            List<Point> result = new ArrayList<Point>();
-            for (Point e : line) {
-                result.add(new Point(e.y, e.x));
-            }
-            return result;
+    public static class ReverseMatrix extends VirtualMatrix {
+        public ReverseMatrix(int[][] matrix) {
+            super(matrix);
         }
 
-        // 返回结果
-        List<Point> result = new ArrayList<Point>();
-        for (int x = 0; x < width; x++) {
-            float percent = ((float) x + 0.25f) / width;
-            int y = (int) (height * percent);
-            result.add(new Point(x, y));
+        @Override
+        public int get(int x, int y) {
+            return super.get(y, x);
         }
-        return result;
-    }
 
-    public static class Point {
-        public int x;
-        public int y;
+        @Override
+        public int getWidth() {
+            return super.getHeight();
+        }
 
-        public Point(int x, int y) {
-            this.x = x;
-            this.y = y;
+        @Override
+        public int getHeight() {
+            return super.getWidth();
         }
     }
 }
