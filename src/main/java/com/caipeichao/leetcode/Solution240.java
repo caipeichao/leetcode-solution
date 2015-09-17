@@ -24,26 +24,29 @@ public class Solution240 {
         if (r.found) {
             return true;
         }
-        if (r.to == null) return false;
 
         // 提取要搜索的范围，分别进行二分查找
-        Point toPoint = diagonal.get(r.to);
-        List<Integer> vline = getLine(matrix, new Point(toPoint.x, 0), toPoint);
-        Return vr = bisect(vline, target);
-        if (vr.found) return true;
+        if (r.to != null) {
+            Point toPoint = diagonal.get(r.to);
+            List<Integer> vline = getLine(matrix, new Point(toPoint.x, 0), toPoint);
+            Return vr = bisect(vline, target);
+            if (vr.found) return true;
 
-        List<Integer> hline = getLine(matrix, new Point(0, toPoint.y), toPoint);
-        Return hr = bisect(hline, target);
-        if (hr.found) return true;
+            List<Integer> hline = getLine(matrix, new Point(0, toPoint.y), toPoint);
+            Return hr = bisect(hline, target);
+            if (hr.found) return true;
+        }
 
-        Point fromPoint = diagonal.get(r.from);
-        List<Integer> v2line = getLine(matrix, fromPoint, new Point(fromPoint.x, height - 1));
-        Return vr2 = bisect(v2line, target);
-        if (vr2.found) return true;
+        if (r.from != null) {
+            Point fromPoint = diagonal.get(r.from);
+            List<Integer> v2line = getLine(matrix, fromPoint, new Point(fromPoint.x, height - 1));
+            Return vr2 = bisect(v2line, target);
+            if (vr2.found) return true;
 
-        List<Integer> h2line = getLine(matrix, fromPoint, new Point(width - 1, fromPoint.y));
-        Return hr2 = bisect(h2line, target);
-        if (hr2.found) return true;
+            List<Integer> h2line = getLine(matrix, fromPoint, new Point(width - 1, fromPoint.y));
+            Return hr2 = bisect(h2line, target);
+            if (hr2.found) return true;
+        }
 
         return false;
     }
@@ -60,12 +63,16 @@ public class Solution240 {
                         return found();
                     }
                     if (e > target) {
-                        return notFound(i - 1, i);
+                        if (i > 0) {
+                            return notFound(i - 1, i);
+                        } else {
+                            return notFound(null, i);
+                        }
                     }
                 }
                 return notFound(end - 1, null);
             }
-            int mid = (length - 1) / 2;
+            int mid = start + (length - 1) / 2;
             int midNum = list.get(mid);
             if (midNum < target) {
                 start = mid;
