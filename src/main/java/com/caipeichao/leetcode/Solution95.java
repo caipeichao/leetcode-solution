@@ -67,3 +67,4 @@ public class Solution95 {
         return result;
     }
 }
+
