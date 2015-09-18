@@ -1,6 +1,7 @@
 package com.caipeichao.leetcode;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.sun.deploy.util.StringUtils;
 
 import java.util.ArrayList;
@@ -69,5 +70,18 @@ public class TestUtils {
             }
         }
         return "{" + StringUtils.join(result, ",") + "}";
+    }
+
+    public static int[] parseJsonArray(String input) {
+        JSONArray a = JSON.parseArray(input);
+        int[] result = new int[a.size()];
+        for (int i = 0; i < a.size(); i++) {
+            result[i] = a.getIntValue(i);
+        }
+        return result;
+    }
+
+    public static String toJsonString(Object e) {
+        return JSON.toJSONString(e);
     }
 }
