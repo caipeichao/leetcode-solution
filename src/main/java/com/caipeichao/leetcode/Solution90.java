@@ -94,3 +94,9 @@ public class Solution90 {
         public int[] count;
     }
 }
+
+/*
+x x x x x
+  3 2 1 c
+     */
+
