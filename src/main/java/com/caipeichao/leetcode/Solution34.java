@@ -54,13 +54,13 @@ public class Solution34 {
             }
 
             // 二分法
-            int mid = start + (length -1)/2;
+            int mid = start + (length - 1) / 2;
             int midNum = nums[mid];
-            if(midNum == target) {
+            if (midNum == target) {
                 start = mid;
-            } else if(target < midNum) {
-                end = mid +1;
-            } else if(midNum < target) {
+            } else if (target < midNum) {
+                end = mid + 1;
+            } else if (midNum < target) {
                 start = mid;
             }
         }
@@ -119,3 +119,4 @@ public class Solution34 {
         public int end;
     }
 }
+
