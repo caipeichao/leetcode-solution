@@ -84,4 +84,8 @@ public class TestUtils {
     public static String toJsonString(Object e) {
         return JSON.toJSONString(e);
     }
+
+    public static List<List<Integer>> parseJsonListList(String s) {
+        return (List) JSON.parseArray(s);
+    }
 }
