@@ -88,4 +88,27 @@ public class TestUtils {
     public static List<List<Integer>> parseJsonListList(String s) {
         return (List) JSON.parseArray(s);
     }
+
+    public static ListNode parseLinkedList(String input) {
+        List<Integer> list = (List) JSON.parseArray(input);
+        ListNode head = null;
+        ListNode tail = null;
+        for (int e : list) {
+            ListNode newNode = new ListNode(e);
+            if (tail != null) tail.next = newNode;
+            tail = newNode;
+            if (head == null) head = tail;
+        }
+        return head;
+    }
+
+    public static String toStringListNode(ListNode head) {
+        List<Integer> result = new ArrayList<Integer>();
+        ListNode node = head;
+        while (node != null) {
+            result.add(node.val);
+            node = node.next;
+        }
+        return JSON.toJSONString(result);
+    }
 }

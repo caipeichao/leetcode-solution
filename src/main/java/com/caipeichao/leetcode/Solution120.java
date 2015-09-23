@@ -31,3 +31,4 @@ public class Solution120 {
         return result;
     }
 }
+
