@@ -3,7 +3,7 @@ package com.caipeichao.leetcode;
 public class Solution58 {
     public int lengthOfLastWord(String s) {
         int fromIndex = skipTailSpaces(s);
-        if(fromIndex == -1) return 0;
+        if (fromIndex == -1) return 0;
         int lastSpace = s.lastIndexOf(' ', fromIndex);
         return fromIndex - lastSpace;
     }
