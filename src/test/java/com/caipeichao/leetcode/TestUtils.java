@@ -111,4 +111,17 @@ public class TestUtils {
         }
         return JSON.toJSONString(result);
     }
+
+    public static int[][] parseIntGrid(String input) {
+        List<List<Integer>> list = (List) JSON.parseArray(input);
+        int width = list.size();
+        int height = list.get(0).size();
+        int[][] result = new int[width][height];
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                result[x][y] = list.get(x).get(y);
+            }
+        }
+        return result;
+    }
 }
