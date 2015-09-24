@@ -1,5 +1,8 @@
 package com.caipeichao.leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Solution63 {
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
         // 获取地图的长度和高度
@@ -34,3 +37,4 @@ public class Solution63 {
         return pathCount[x][y];
     }
 }
+
