@@ -22,7 +22,7 @@ public class Solution131 {
 
             // 剩余部分递归
             String remain = s.substring(i);
-            if(remain.isEmpty()) {
+            if (remain.isEmpty()) {
                 List<String> p = new ArrayList<String>();
                 p.add(head);
                 result.add(p);
@@ -50,3 +50,4 @@ public class Solution131 {
         return true;
     }
 }
+
