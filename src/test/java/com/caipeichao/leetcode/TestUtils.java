@@ -20,6 +20,18 @@ public class TestUtils {
         return result.toString();
     }
 
+    public static String toString(boolean[] b) {
+        StringBuilder result = new StringBuilder();
+        for (boolean e : b) {
+            if (e) {
+                result.append("T");
+            } else {
+                result.append("F");
+            }
+        }
+        return result.toString();
+    }
+
     public static String toString2(List<Integer> list) {
         StringBuilder result = new StringBuilder();
         for (Integer e : list) {
