@@ -20,3 +20,4 @@ public class Solution292 {
         return false;
     }
 }
+
