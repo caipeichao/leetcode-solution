@@ -5,3 +5,4 @@ public class Solution292_2 {
         return n % 4 != 0;
     }
 }
+
