@@ -6,3 +6,4 @@ public class Solution237 {
         node.next = node.next.next;
     }
 }
+
