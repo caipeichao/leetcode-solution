@@ -6,3 +6,4 @@ public class Solution258_2 {
         return (num - 1) % 9 + 1;
     }
 }
+
