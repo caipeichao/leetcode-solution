@@ -2,7 +2,7 @@ package com.caipeichao.leetcode;
 
 public class Solution258 {
     public int addDigits(int num) {
-        while (num > 10) {
+        while (num > 9) {
             num = sumDigits(num);
         }
         return num;
@@ -17,3 +17,4 @@ public class Solution258 {
         return result;
     }
 }
+
