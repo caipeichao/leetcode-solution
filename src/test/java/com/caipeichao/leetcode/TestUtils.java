@@ -48,6 +48,20 @@ public class TestUtils {
         return result.toString();
     }
 
+    public static String toString2(int[] b) {
+        if (b.length == 0) return "";
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < b.length; i++) {
+            int e = b[i];
+            result.append(i);
+            result.append(":");
+            result.append(e);
+            result.append(",");
+        }
+        result.deleteCharAt(result.length() - 1);
+        return result.toString();
+    }
+
     public static int[] parseIntArray(String input) {
         String[] a = input.split(",");
         int[] result = new int[a.length];

@@ -20,3 +20,4 @@ public class Solution260_2 {
         return result;
     }
 }
+
