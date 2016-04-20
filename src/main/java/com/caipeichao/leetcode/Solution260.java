@@ -26,3 +26,4 @@ public class Solution260 {
         throw new RuntimeException("not found");
     }
 }
+

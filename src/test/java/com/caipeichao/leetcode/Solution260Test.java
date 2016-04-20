@@ -3,6 +3,8 @@ package com.caipeichao.leetcode;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
+
 import static org.testng.Assert.*;
 
 public class Solution260Test {
@@ -10,6 +12,16 @@ public class Solution260Test {
     public void test(String input, String expect) {
         int[] nums = TestUtils.parseIntArray(input);
         int[] result = new Solution260().singleNumber(nums);
+        Arrays.sort(result);
+        String actualString = TestUtils.toString(result);
+        assertEquals(actualString, expect);
+    }
+
+    @Test(dataProvider = "a")
+    public void test2(String input, String expect) {
+        int[] nums = TestUtils.parseIntArray(input);
+        int[] result = new Solution260_2().singleNumber(nums);
+        Arrays.sort(result);
         String actualString = TestUtils.toString(result);
         assertEquals(actualString, expect);
     }
