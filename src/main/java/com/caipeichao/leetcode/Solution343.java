@@ -15,3 +15,4 @@ public class Solution343 {
         throw new RuntimeException("x");
     }
 }
+
