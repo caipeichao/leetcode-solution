@@ -8,3 +8,4 @@ public class Solution268 {
         return sum;
     }
 }
+
