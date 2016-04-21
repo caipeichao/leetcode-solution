@@ -13,6 +13,12 @@ public class Solution242Test {
         assertEquals(actual, expect);
     }
 
+    @Test(dataProvider = "a")
+    public void testIsAnagram2(String a, String b, boolean expect) throws Exception {
+        boolean actual = new Solution242_2().isAnagram(a, b);
+        assertEquals(actual, expect);
+    }
+
     @DataProvider(name = "a")
     public Object[][] provide() {
         return new Object[][]{
@@ -20,6 +26,7 @@ public class Solution242Test {
                 new Object[]{"", "", true},
                 new Object[]{"a", "a", true},
                 new Object[]{"car", "rat", false},
+                new Object[]{"aa", "bb", false},
                 new Object[]{"anagram", "nagaram", true},
         };
     }
