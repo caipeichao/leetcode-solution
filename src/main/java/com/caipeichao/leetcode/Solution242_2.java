@@ -15,3 +15,4 @@ public class Solution242_2 {
         return xSum == ySum;
     }
 }
+
