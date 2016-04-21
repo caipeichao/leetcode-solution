@@ -5,3 +5,4 @@ public class Solution319_2 {
         return (int) (StrictMath.sqrt(n));
     }
 }
+
