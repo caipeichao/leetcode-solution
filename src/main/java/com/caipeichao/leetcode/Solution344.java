@@ -5,3 +5,4 @@ public class Solution344 {
         return new StringBuilder(s).reverse().toString();
     }
 }
+
