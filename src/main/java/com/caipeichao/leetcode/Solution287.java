@@ -12,3 +12,4 @@ public class Solution287 {
         return 0;
     }
 }
+
