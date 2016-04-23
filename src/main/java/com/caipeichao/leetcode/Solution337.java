@@ -1,37 +1,33 @@
 package com.caipeichao.leetcode;
 
-import java.util.IdentityHashMap;
-import java.util.Map;
+import sun.tools.jconsole.MaximizableInternalFrame;
 
 public class Solution337 {
     public int rob(TreeNode root) {
-        if (root == null) return 0;
         Max max = rob2(root);
-        int result = Math.max(max.inclusive, max.exclusive);
-        return result;
+        return Math.max(max.inclusive, max.exclusive);
     }
 
-    public Max rob2(TreeNode node) {
+    private Max rob2(TreeNode node) {
+        // rob nothing
         if (node == null) return new Max();
 
-        // 计算左右各个节点的最大值情况
+        // recursive left node and right node
         Max left = rob2(node.left);
         Max right = rob2(node.right);
 
-        // 分别计算包含本节点的最大值和不包含本节点的最大值
+        // compute exclusive max and inclusive max
         Max result = new Max();
-        result.exclusive = getExclusiveMax(node, left, right);
-        result.inclusive = getInclusiveMax(node, left, right);
+
+        // include self node, so exclude child node
+        result.inclusive = node.val + left.exclusive + right.exclusive;
+
+        // exclude self node, so include child node
+        result.exclusive = left.inclusive + right.inclusive;
+
+        // inclusive may less then exclusive
         result.inclusive = Math.max(result.exclusive, result.inclusive);
         return result;
-    }
-
-    private int getInclusiveMax(TreeNode node, Max left, Max right) {
-        return node.val + left.exclusive + right.exclusive;
-    }
-
-    private int getExclusiveMax(TreeNode node, Max left, Max right) {
-        return left.inclusive + right.inclusive;
     }
 
     private static class Max {
@@ -39,3 +35,4 @@ public class Solution337 {
         public int exclusive;
     }
 }
+
