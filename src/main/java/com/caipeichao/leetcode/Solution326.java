@@ -1,5 +1,8 @@
 package com.caipeichao.leetcode;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Solution326 {
     public boolean isPowerOfThree(int n) {
         if (n < 0) return false;
@@ -12,3 +15,4 @@ public class Solution326 {
         return true;
     }
 }
+
