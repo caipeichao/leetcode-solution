@@ -15,6 +15,14 @@ public class Solution328Test {
         assertEquals(ac, expect);
     }
 
+    @Test(dataProvider = "a")
+    public void testOddEvenList2(String in, String expect) throws Exception {
+        ListNode a = TestUtils.parseLinkedList(in);
+        ListNode r = new Solution328_2().oddEvenList(a);
+        String ac = TestUtils.toStringListNode(r);
+        assertEquals(ac, expect);
+    }
+
     @DataProvider(name = "a")
     public Object[][] provide() {
         return new Object[][]{
