@@ -1,5 +1,8 @@
 package com.caipeichao.leetcode;
 
+import java.util.IdentityHashMap;
+import java.util.Map;
+
 public class Solution328_2 {
     public ListNode oddEvenList(ListNode head) {
         // 特殊情况
@@ -29,3 +32,4 @@ public class Solution328_2 {
         return li1Head;
     }
 }
+

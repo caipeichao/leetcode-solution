@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.sun.deploy.util.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -149,5 +150,44 @@ public class TestUtils {
             }
         }
         return result;
+    }
+
+    public static TreeNode parseTreeNode(String input) {
+        // 解析json
+        JSONArray a = JSON.parseArray(input);
+        Iterator<Object> iter = a.iterator();
+        if (!iter.hasNext()) return null;
+
+        // 生成根节点
+        TreeNode root = pollTreeNode(iter);
+        if (!iter.hasNext()) return root;
+
+        // 分层解析
+        List<TreeNode> thisLayer = new ArrayList<TreeNode>();
+        thisLayer.add(root);
+        List<TreeNode> nextLayer = new ArrayList<TreeNode>();
+
+        // 解析当前层
+        while (true) {
+            for (TreeNode node : thisLayer) {
+                if (node == null) continue;
+                node.left = pollTreeNode(iter);
+                nextLayer.add(node.left);
+                if (!iter.hasNext()) return root;
+                node.right = pollTreeNode(iter);
+                nextLayer.add(node.right);
+                if (!iter.hasNext()) return root;
+            }
+            if (nextLayer.isEmpty()) return root;
+            thisLayer = nextLayer;
+            nextLayer = new ArrayList<TreeNode>();
+        }
+    }
+
+    private static TreeNode pollTreeNode(Iterator<Object> iter) {
+        if (!iter.hasNext()) return null;
+        Object e = iter.next();
+        if (e == null) return null;
+        return new TreeNode((Integer) e);
     }
 }
