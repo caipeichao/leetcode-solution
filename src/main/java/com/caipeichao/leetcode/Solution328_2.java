@@ -12,7 +12,7 @@ public class Solution328_2 {
         ListNode li2Head = head.next;
         ListNode li2Tail = head.next;
         ListNode iter = head.next.next;
-        while (true) {
+        while (iter != null) {
             li1Tail.next = iter;
             li1Tail = iter;
             iter = iter.next;

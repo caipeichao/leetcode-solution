@@ -27,6 +27,7 @@ public class Solution328Test {
     public Object[][] provide() {
         return new Object[][]{
                 new Object[]{"[]", "[]"},
+                new Object[]{"[1,2]", "[1,2]"},
                 new Object[]{"[1,2,3,4,5]", "[1,3,5,2,4]"},
         };
     }
