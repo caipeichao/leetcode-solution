@@ -19,6 +19,12 @@ public class Solution326Test {
         assertEquals(ac, ex);
     }
 
+    @Test(dataProvider = "a")
+    public void testIsPowerOfThree3(int a, boolean ex) throws Exception {
+        boolean ac = new Solution326_3().isPowerOfThree(a);
+        assertEquals(ac, ex);
+    }
+
     @DataProvider(name = "a")
     public Object[][] provide() {
         return new Object[][]{

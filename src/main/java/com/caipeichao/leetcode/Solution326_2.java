@@ -33,3 +33,4 @@ public class Solution326_2 {
         return li.contains(n);
     }
 }
+
