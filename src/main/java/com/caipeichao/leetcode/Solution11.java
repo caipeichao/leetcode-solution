@@ -17,3 +17,4 @@ public class Solution11 {
         return maxArea;
     }
 }
+
