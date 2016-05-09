@@ -190,4 +190,75 @@ public class TestUtils {
         if (e == null) return null;
         return new TreeNode((Integer) e);
     }
+
+    public static String encodeIntArrayArray(int[][] board) {
+        StringBuilder result = new StringBuilder();
+        boolean first = true;
+        for (int[] e : board) {
+            if (first) first = false;
+            else result.append(";");
+            boolean first2 = true;
+            for (int e2 : e) {
+                if (first2) first2 = false;
+                else result.append(",");
+                result.append(e2);
+            }
+        }
+        return result.toString();
+    }
+
+    public static int[][] decodeIntArrayArray(String board) {
+        String[] split = board.split(";");
+        int[][] result = new int[split.length][];
+        for (int i = 0; i < result.length; i++) {
+            String e = split[i];
+            String[] split2 = e.split(",");
+            result[i] = new int[split2.length];
+            for (int j = 0; j < result[i].length; j++) {
+                String e2 = split2[j];
+                result[i][j] = Integer.parseInt(e2);
+            }
+        }
+        return result;
+    }
+
+    public static String encodeIntArray(int[] a) {
+        return null;
+    }
+
+    public static int[] decodeIntArray(int[] a) {
+        return null;
+    }
+
+    public static String encodeIntList(List<Integer> a) {
+        return null;
+    }
+
+    public static List<Integer> decodeIntList(String a) {
+        return null;
+    }
+
+    public static String encodeTreeNode(TreeNode node) {
+        return null;
+    }
+
+    public static TreeNode decodeTreeNode(String s) {
+        return null;
+    }
+
+    public static String encodeBoolArray(boolean[] a) {
+        return null;
+    }
+
+    public static boolean[] decodeBoolArray(String a) {
+        return null;
+    }
+
+    public static String encodeTreeNodeList(List<TreeNode> a) {
+        return null;
+    }
+
+    public static List<TreeNode> decodeTreeNodeList(String a) {
+        return null;
+    }
 }
