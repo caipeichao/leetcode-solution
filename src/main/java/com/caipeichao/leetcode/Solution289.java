@@ -40,10 +40,10 @@ public class Solution289 {
     }
 
     private int get(int x, int y) {
-        if (x < 0) x += width;
-        if (y < 0) y += height;
-        if (x >= width) x -= width;
-        if (y >= height) y -= height;
+        if (x < 0) return 0;
+        if (y < 0) return 0;
+        if (x >= width) return 0;
+        if (y >= height) return 0;
         return board[x][y];
     }
 }
