@@ -14,10 +14,18 @@ public class Solution289Test {
         assertEquals(actual2, expect);
     }
 
+    @Test(dataProvider = "a")
+    public void test2(String board, String expect) {
+        int[][] board2 = TestUtils.decodeIntArrayArray(board);
+        new Solution289_2().gameOfLife(board2);
+        String actual2 = TestUtils.encodeIntArrayArray(board2);
+        assertEquals(actual2, expect);
+    }
+
     @DataProvider(name = "a")
     public Object[][] provide() {
         return new Object[][]{
-                new Object[]{"1,0,0,0;0,0,1,0;0,1,0,0;0,1,0,0", "0,1,0,0;0,1,0,0;0,1,1,0;1,1,0,0"},
+                new Object[]{"1,0,0,0;0,0,1,0;0,1,0,0;0,1,0,0", "0,0,0,0;0,1,0,0;0,1,1,0;0,0,0,0"},
         };
     }
 

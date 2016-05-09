@@ -1,6 +1,6 @@
 package com.caipeichao.leetcode;
 
-public class Solution289 {
+public class Solution289_2 {
     private int width = 0;
     private int height = 0;
     private int[][] board;
@@ -12,7 +12,6 @@ public class Solution289 {
         this.board = board;
 
         // 统计每个点上的细胞数量
-        int[][] count = new int[width][height];
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 int c = 0;
@@ -24,14 +23,15 @@ public class Solution289 {
                 c += get(x + 1, y - 1);
                 c += get(x + 1, y);
                 c += get(x + 1, y + 1);
-                count[x][y] = c;
+                setCount(x, y, c);
             }
         }
 
         // 生命游戏规则
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                int c = count[x][y];
+                int c = getCount(x, y);
+                setCount(x, y, 0);
                 if (c == 3) board[x][y] = 1;
                 else if (c == 2) board[x][y] = board[x][y];
                 else board[x][y] = 0;
@@ -46,5 +46,12 @@ public class Solution289 {
         if (y >= height) return 0;
         return board[x][y];
     }
-}
 
+    private void setCount(int x, int y, int count) {
+        board[x][y] = (board[x][y] & 0x000f) | (count << 4);
+    }
+
+    private int getCount(int x, int y) {
+        return (board[x][y] & 0x00f0) >> 4;
+    }
+}
