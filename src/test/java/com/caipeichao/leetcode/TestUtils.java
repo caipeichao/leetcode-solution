@@ -226,8 +226,13 @@ public class TestUtils {
         return null;
     }
 
-    public static int[] decodeIntArray(int[] a) {
-        return null;
+    public static int[] decodeIntArray(String a) {
+        String[] split = a.split(",");
+        int[] result = new int[split.length];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = Integer.parseInt(split[i]);
+        }
+        return result;
     }
 
     public static String encodeIntList(List<Integer> a) {

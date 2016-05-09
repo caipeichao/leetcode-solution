@@ -55,3 +55,4 @@ public class Solution289_2 {
         return (board[x][y] & 0x00f0) >> 4;
     }
 }
+
