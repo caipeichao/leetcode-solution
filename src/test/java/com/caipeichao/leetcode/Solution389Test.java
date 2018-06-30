@@ -19,6 +19,7 @@ public class Solution389Test {
                 new Object[]{"a", "ba", 'b'},
                 new Object[]{"a", "aa", 'a'},
                 new Object[]{"a", "aa", 'a'},
+                new Object[]{"abcde", "ebcdda", 'd'},
         };
     }
 }

@@ -1,21 +1,39 @@
 package com.caipeichao.leetcode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Solution389 {
     public char findTheDifference(String s1, String s2) {
-        // 计算两个字符串的最短长度
-        int n1 = s1.length();
-        int n2 = s2.length();
-        int n = Math.min(n1, n2);
+        // 按字符统计数量
+        Map<Character, Integer> m1 = stats(s1);
+        Map<Character, Integer> m2 = stats(s2);
 
-        // 尝试找出最短长度以内的不同
-        for (int i = 0; i < n; i++) {
-            char c1 = s1.charAt(i);
-            char c2 = s2.charAt(i);
-            if (c1 != c2) return c2;
+        // 根据统计结果找出变多的字母
+        return diff(m1, m2);
+    }
+
+    private Map<Character, Integer> stats(String s) {
+        Map<Character, Integer> result = new HashMap<>();
+        for (char c : s.toCharArray()) {
+            result.put(c, result.getOrDefault(c, 0) + 1);
         }
+        return result;
+    }
 
-        // 超过最短长度了，拿第二个字符串
-        assert s2.length() > n;
-        return s2.charAt(n);
+    private char diff(Map<Character, Integer> m1, Map<Character, Integer> m2) {
+        for (char c : m1.keySet()) {
+            if (m1.get(c).equals(m2.get(c))) {
+                m2.remove(c);
+            }
+        }
+        if (m2.size() != 1) {
+            throw new RuntimeException("Expect add only one type char");
+        }
+        char result = m2.keySet().iterator().next();
+        if (m2.get(result) - m1.getOrDefault(result, 0) != 1) {
+            throw new RuntimeException("Expect add only one char");
+        }
+        return result;
     }
 }
