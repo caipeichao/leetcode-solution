@@ -6,7 +6,8 @@ import java.util.Objects;
 
 public class Solution808 {
     public double soupServings(int N) {
-        if(N > 7000) return 1.0;
+        if (N == 0) return 0.5;
+        if (N > 7000) return 1.0;
         return soupServingsWithCache(N, N);
     }
 
