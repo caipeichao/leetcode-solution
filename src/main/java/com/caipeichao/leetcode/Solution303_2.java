@@ -27,7 +27,7 @@ public class Solution303_2 {
     static class NumArray {
         private final int[] nums;
         private final SumNode root;
-        private static final int MAX_NODE_LENGTH = 10;
+        private static final int MAX_NODE_LENGTH = 4;
 
         public NumArray(int[] nums) {
             this.nums = nums;
