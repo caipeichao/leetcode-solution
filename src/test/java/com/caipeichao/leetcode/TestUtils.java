@@ -64,6 +64,7 @@ public class TestUtils {
     }
 
     public static int[] parseIntArray(String input) {
+        if (input.isEmpty()) return new int[0];
         String[] a = input.split(",");
         int[] result = new int[a.length];
         for (int i = 0; i < a.length; i++) {
